@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh Ramakrishnan - CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #000428, #004e92);
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        section {
+            margin: 40px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+            transition: transform 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h2 {
+            color: #ffcc00;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            section {
+                width: 95%;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Anirudh Ramakrishnan</h1>
+        <p>B.Tech. Computer Science & Engineering | SRM University (2024 - 2028)</p>
+    </header>
+    
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>Minecraft Hour of Code – Minecraft (Issued Oct 2023)</li>
+            <li>Future Tech Olympiad – 1M1B in partnership with IBM & CBSE (Issued Feb 2023)</li>
+            <li>C1 Proficiency Cambridge – Cambridge University Press & Assessment (Issued Sep 2022)</li>
+            <li>Kaizen Internet Of Things (IOT) Program – Lema Labs, IIT Research Park (Issued Apr 2019)</li>
+            <li>Kaizen Robotics Program – Lema Labs, IIT Research Park (Issued Mar 2019)</li>
+        </ul>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <h3>Smart Dustbin (YES Competition)</h3>
+        <p>Developed a fully working model of a Smart Dustbin with advanced integrations.</p>
+        <ul>
+            <li>Ultrasonic sensor opens the bin automatically at ~5 meters.</li>
+            <li>IR sensor detects waste accumulation and sends notifications to responsible authorities.</li>
+            <li>Attempted real-time segregation of bio and non-bio waste using a gas sensor.</li>
+        </ul>
+    </section>
+    
+    <section id="competitions">
+        <h2>Competitions</h2>
+        <p>IWMA YES Competition IIT Madras Finalist</p>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>C, Python, MySQL</li>
+            <li>HTML</li>
+            <li>Engineering</li>
+            <li>Speaking</li>
+        </ul>
+    </section>
+    
+    <section id="passions">
+        <h2>Passions</h2>
+        <ul>
+            <li>Car Technology & Innovation</li>
+            <li>Sports</li>
+            <li>Sporting Technologies</li>
+            <li>Prompt Engineering</li>
+            <li>Arduino</li>
+        </ul>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:anirudhramakrishnanramanathan@gmail.com">anirudhramakrishnanramanathan@gmail.com</a></p>
+        <p>Phone: +91 9952952314</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/anirudh-ramakrishnan-3b5119309/" target="_blank">Anirudh Ramakrishnan</a></p>
+        <p>GitHub: <a href="https://github.com/iamroyce007" target="_blank">iamroyce007</a></p>
+    </section>
+</body>
+</html>
