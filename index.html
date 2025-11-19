@@ -1,148 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ANIRUDH.exe // iamroyce007</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <style>
-    :root {
-      --neon: #39ff14;
-      --dark: #0d0d0d;
-      --glass: rgba(10, 20, 10, 0.4);
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background: #000;
-      color: var(--neon);
-      font-family: 'Roboto Mono', monospace;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 20% 80%, rgba(57,255,20,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(57,255,20,0.08) 0%, transparent 50%);
-    }
-    .background-text {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      opacity: 0.03;
-      font-family: 'Orbitron';
-      font-size: 8vw;
-      color: var(--neon);
-      z-index: 0;
-      user-select: none;
-      background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(57,255,20,0.02) 40px, rgba(57,255,20,0.02) 80px);
-    }
-    .bg-words {
-      position: absolute;
-      animation: float 30s infinite linear;
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh) rotate(0deg); }
-      100% { transform: translateY(-100vh) rotate(360deg); }
-    }
-    header {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      background: radial-gradient(circle at center, rgba(57,255,20,0.15), transparent 70%);
-    }
-    .hero {
-      text-align: center;
-      z-index: 2;
-    }
-    .glitch {
-      font-family: 'Orbitron';
-      font-size: clamp(3rem, 10vw, 9rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      position: relative;
-      color: var(--neon);
-      text-shadow: 
-        0 0 10px var(--neon),
-        0 0 40px var(--neon),
-        0 0 80px var(--neon);
-      animation: glitch 3s infinite;
-    }
-    @keyframes glitch {
-      0%,100% { text-shadow: 2px 2px 0 #ff00ff, -2px -2px 0 #00ffff; }
-      20% { text-shadow: -2px -2px 0 #ff00ff, 2px 2px 0 #00ffff; }
-      40% { text-shadow: 2px -2px 0 #00ffff, -2px 2px 0 #ff00ff; }
-    }
-    .terminal {
-      background: var(--glass);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(57,255,20,0.3);
-      border-radius: 20px;
-      padding: 2rem;
-      margin: 2rem auto;
-      max-width: 1000px;
-      box-shadow: 
-        0 0 30px rgba(57,255,20,0.4),
-        inset 0 0 20px rgba(0,0,0,0.6);
-      position: relative;
-      overflow: hidden;
-    }
-    .terminal::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 40px;
-      background: linear-gradient(to bottom, rgba(57,255,20,0.2), transparent);
-      border-radius: 20px 20px 0 0;
-    }
-    h1, h2 {
-      font-family: 'Orbitron';
-      color: var(--neon);
-      text-shadow: 0 0 20px var(--neon);
-      margin-bottom: 1rem;
-    }
-    .bubble {
-      background: rgba(57,255,20,0.1);
-      border-radius: 50%;
-      position: absolute;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(57,255,20,0.3);
-      animation: bubble 15s infinite linear;
-    }
-    @keyframes bubble {
-      0% { transform: translateY(100vh) scale(0); }
-      100% { transform: translateY(-100px) scale(1); }
-    }
-    .project-card {
-      background: rgba(20,30,20,0.5);
-      border: 1px solid var(--neon);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      box-shadow: 0 0 20px rgba(57,255,20,0.3);
-      transition: all 0.5s;
-    }
-    .project-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 0 40px var(--neon);
-    }
-    .contact a {
-      color: var(--neon);
-      text-decoration: none;
-      font-weight: bold;
-      text-shadow: 0 0 10px var(--neon);
-    }
-    footer {
-      text-align: center;
-      padding: 4rem;
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANIRUDH // iamroyce007</title>
+    <meta name="description" content="Anirudh Ramakrishnan — B.Tech CSE | AI + IoT + Full-Stack Wizard" />
 
-  <!-- Floating Background Text -->
-  <div class="background-text">
-    <div class="bg-words" style="top:10%;left:5%;animation-delay:0s;">PYTHON</div>
-    <div class="bg-words" style
-        
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet" />
+
+    <!-- GSAP Latest (2025) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+      :root {
+        --neon: #39ff14;
+        --neon-dark: #00ff41;
+        --bg: #000000;
+        --glass: rgba(15, 30, 15, 0.45);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--neon);
+        font-family: 'Roboto Mono', monospace;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      /* Animated Matrix Rain Background */
+      #matrix-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.08;
+      }
+
+      /* Floating Old-School Tech Words */
+      .float-word {
+        position: absolute;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 6vw;
+        font-weight: 900;
+        color: var(--neon);
+        opacity: 0.05;
+        pointer-events: none;
+        animation: drift 40s linear infinite;
+        text-shadow: 0 0 30px var(--neon);
+      }
+      @keyframes drift {
+        0%   { transform: translateY(100vh) translateX(0) rotate(0deg); }
+        100% { transform: translateY(-100vh) translateX(100px) rotate(360deg); }
+      }
+
+      /* Neon Liquid Bubbles */
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(57,255,20,0.4), transparent 70%);
+        border: 2px solid var(--neon);
+        box-shadow: 0 0 40px var(--neon);
+        pointer-events: none;
+        animation: rise 15s infinite linear;
+      }
+      @keyframes rise {
+        0%   { transform: translateY(120vh) scale(0); opacity: 0; }
+        10%  { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+      }
+
+      /* Hero Section */
+      header {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+      }
+      .hero-text {
+        text-align: center;
+      }
+      .glitch {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(4rem, 12vw, 11rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        color: var(--neon);
+        text-shadow: 
+          0 0 10px var(--neon),
+          0 0 30px var(--neon),
+          0 0 80px var(--neon),
+          3px 3px 0 #ff00ff,
+          -3px -3px 0 #00ffff;
+        animation: glitch-flicker 4s infinite;
+      }
+      @keyframes glitch-flicker {
+        0%,100% { text-shadow: 3px 3px 0 #ff00ff, -3px -3px 0 #00ffff, 0 0 40px var(--neon); }
+        14% { text-shadow: -3px -3px 0 #ff00ff, 3px 3px 0 #00ffff, 0 0 60px var(--neon); }
+        28% { text-shadow: 3px -3px 0 #00ffff, -3px 3px 0 #ff00ff, 0 0 50px var(--neon); }
+      }
+
+      .tagline {
+        font-size: 1.6rem;
+        margin-top: 1rem;
+        opacity: 0.9;
+        animation: blink 1.5s infinite;
+      }
+      @keyframes blink {
+        50% { opacity: 0.6;
+      }
+
+      /* Glass Terminal Cards */
+      .section {
+        margin: 6rem auto;
+        max-width: 1100px;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 10;
+      }
+      .terminal {
+        {
+        background: var(--glass);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(57,255,20,0.4);
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: 
+          0 8px 32px rgba(0,0,0,0.8),
+          0 0 40px rgba(57,255,20,0.3),
+          inset 0 0 30px rgba(0,0,0,0.5);
+        position: relative;
+        overflow: hidden;
+      }
+      .terminal::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        padding: 2px;
+        background: linear-gradient(45deg, transparent, var(--neon), transparent);
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      h2 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 0 0 20px var(--neon);
+      }
+
+      .project {
+        background: rgba(20,40,20,0.4);
+        border: 1px solid var(--neon);
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem 0;
+        transition: all 0.6s ease;
+      }
+      .project:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 0 60px var(--neon);
+      }
+
+      a {
+        color: var(--neon);
+        text-decoration: none;
+        font-weight: bold;
+        text-shadow: 0 0 10px var(--neon);
+        transition: all 0.3s;
+      }
+      a:hover { color: #fff; text-shadow: 0 0 30px #fff; }
+
+      footer {
+        text-align: center;
+        padding: 5rem 2rem;
+        font-size: 1.1rem;
+        opacity: 0.7;
+        z-index: 10;
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-bg"></canvas>
+
+    <!-- Floating Tech Words -->
+    <div class="float-word" style="top:10%;left:5%;animation-delay:0s;">PYTHON</div>
+    <div class="float-word" style="top:20%;left:75%;animation-delay:4s;">ARDUINO</div>
+    <div class="float-word" style="top:50%;left:10%;animation-delay:8s;">GEMINI</div>
+    <div class="float-word" style="top:70%;left:80%;animation-delay:12s;">FLASK</div>
+    <div class="float-word" style="top:35%;left:60%;animation-delay:16s;">IoT</div>
+    <div class="float-word" style="top:85%;left:20%;animation-delay:20s;">CS50AI</div>
+    <div class="float-word" style="top:5%;left:40%;animation-delay:24s;">n8n</div>
+
+    <!-- Neon Bubbles -->
+    <div class="bubble" style="width:250px;height:250px;left:5%;animation-duration:18s;"></div>
+    <div class="bubble" style="width:350px;height:350px;right:10%;animation-duration:22s;animation-delay:5s;"></div>
+    <div class="bubble" style="width:200px;height:200px;left:70%;animation-duration:16s;animation-delay:10s;"></div>
+    <div class="bubble" style="width:300px;height:300px;right:30%;animation-duration:20s;animation-delay:2s;"></div>
+
+    <!-- Hero -->
+    <header>
+      <div class="hero-text">
+        <h1 class="glitch" data-text="ANIRUDH">ANIRUDH</h1>
+        <p class="tagline">> iamroyce007.exe loaded successfully</p>
+        <p style="margin-top:2rem;font-size:1.8rem;">
+          B.Tech CSE • AI • IoT • Full-Stack • Automation
+        </p>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="section"><div class="terminal">
+      <h2>EXECUTIVE SUMMARY</h2>
+      <p>B.Tech Computer Science student insanely passionate about software, APIs, AI, IoT, and automation. Constantly building real-world projects and experimenting with tools like n8n, Gemini API, Flask, Arduino, and more. Goal: ship scalable, impactful products that solve actual problems.</p>
+    </div></div>
+
+    <div class="section"><div class="terminal">
+      <h2>FEATURED PROJECTS</h2>
+      <div class="project">
+        <h3>Smart Dustbin — YES Competition IIT Madras Finalist</h3>
+        <p>Ultrasonic auto-lid + IR level sensor → Blynk/IFTTT notifications. Explored real-time bio/non-bio waste segregation using MQ gas sensors & flame detection. Fully working prototype.</p>
+      </div>
+      <div class="project">
+        <h3>YTAnalyzer — AI YouTube Analyzer</h3>
+        <p>YouTube Data API → Transcript + Comments → Gemini LLM + TextBlob → Live Flask dashboard with sentiment charts, summaries, Q&A. <a href="https://github.com/iamroyce007/YTAnalyzer" target="_blank">→ View on GitHub</a></p>
+      </div>
+    </div></div>
+
+    <div class="section"><div class="terminal">
+      <h2>TECH STACK</h2>
+      <p style="font-size:2rem;letter-spacing:8px;line-height:3rem;">
+        C • Python • MySQL • HTML • CSS • JavaScript • Flask • Gemini API • Arduino • IoT • n8n • Linux • Git
+      </p>
+    </div></div>
+
+    <div class="section"><div class="terminal">
+      <h2>EDUCATION</h2>
+      <p><strong>SRM Institute of Science and Technology, Chennai</strong><br>B.Tech Computer Science Engineering • 2024–2028</p>
+      <p style="margin-top:1rem;">Mahindra World School • Class XII • 2024</p>
+    </div></div>
+
+    <div class="section"><div class="terminal">
+      <h2>CERTIFICATIONS & ACHIEVEMENTS</h2>
+      <ul style="font-size:1.2rem;line-height:2.2rem;">
+        <li>Harvard CS50 Introduction to Artificial Intelligence</li>
+        <li>Kaizen IoT & Robotics Programs – Lema Labs (IIT Madras Research Park)</li>
+        <li>IWMA YES Competition National Finalist – IIT Madras</li>
+        <li>HackerRank Python & SQL Certificates</li>
+      </ul>
+    </div></div>
+
+    <div class="section"><div class="terminal">
+      <h2>CONTACT</h2>
+      <p style="font-size:1.3rem;line-height:2.4rem;">
+        Phone: <a href="tel:+919952952314">+91 99529 52314</a><br>
+        Email: <a href="mailto:anirudhramakrishnanramanathan@gmail.com">anirudhramakrishnanramanathan@gmail.com</a><br>
+        GitHub: <a href="https://github.com/iamroyce007" target="_blank">github.com/iamroyce007</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/anirudh-ramakrishnan-3b5119309/" target="_blank">linkedin.com/in/anirudh-ramakrishnan</a>
+      </p>
+    </div></div>
+
+    <footer>
+      <p>> System online • Ready for hacking the planet • <span style="color:var(--neon);">ANIRUDH.exe v2.025 — 2025</span></p>
+    </footer>
+
+    <!-- Matrix Rain Script -->
+    <script>
+      const canvas = document.getElementById('matrix-bg');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const letters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+      const fontSize = 14;
+      const columns = canvas.width / fontSize;
+      const drops = Array(Math.floor(columns)).fill(1);
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#39ff14';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = letters.charAt(Math.floor(Math.random() * letters.length));
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+          drops[i]++;
+        }
+      }
+      setInterval(draw, 35);
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      // GSAP Animations
+      gsap.from(".glitch", { duration: 2, scale: 0.5, opacity: 0, ease: "elastic.out(1,0.5)" });
+      gsap.from(".terminal", {
+        scrollTrigger: { trigger: ".terminal", start: "top 85%" },
+        y: 150, opacity: 0, duration: 1.4, stagger: 0.3
+      });
+      gsap.from(".project", {
+        scrollTrigger: { trigger: ".project", start: "top 90%" },
+        scale: 0.8, opacity: 0, duration: 1.2, stagger: 0.3
+      });
+    </script>
+  </body>
+</html>
